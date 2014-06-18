@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # @see http://www.rethinkdb.com/docs/install/ubuntu/
 
@@ -17,6 +17,7 @@
 if [ -d "../../rethinkdb-1.12" ]; then
 	cp -Rf ../../rethinkdb-1.12 rethinkdb
 else
+	sudo apt-get update
 	sudo apt-get -y install git-core g++ nodejs npm libprotobuf-dev libgoogle-perftools-dev libncurses5-dev libboost-all-dev nodejs-legacy
 	git clone --depth 1 -b v1.12.x https://github.com/rethinkdb/rethinkdb.git
 	cd rethinkdb
@@ -25,3 +26,7 @@ else
 	cd ..
 	cp -Rf rethinkdb ../../rethinkdb-1.12
 fi
+
+# HACK: Remove symlink that points to missing file which is preventing us from archiving this build.
+#		error: Command failed: tar: build/rethinkdb/drivers/ruby/lib/ql2.pb.rb: File removed before we read it
+rm rethinkdb/drivers/ruby/lib/ql2.pb.rb || true
