@@ -15,6 +15,8 @@
 # In case above fails we can compile from source.
 # Ubuntu 13.04
 if [ -d "../../rethinkdb-1.12" ]; then
+	sudo apt-get update
+	sudo apt-get -y install nodejs npm nodejs-legacy
 	cp -Rf ../../rethinkdb-1.12 rethinkdb
 else
 	sudo apt-get update
