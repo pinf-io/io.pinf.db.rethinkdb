@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo apt-get update
+sudo apt-get -y install nodejs npm nodejs-legacy
+
 initScript='
 description "{{=service.env.PIO_SERVICE_ID_SAFE}}"
 
