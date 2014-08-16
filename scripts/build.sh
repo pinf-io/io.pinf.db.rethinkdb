@@ -14,17 +14,17 @@
 
 # In case above fails we can compile from source.
 # Ubuntu 13.04
-if [ -d "../../rethinkdb-1.12" ]; then
-	cp -Rf ../../rethinkdb-1.12 rethinkdb
+if [ -d "../../rethinkdb-1.13" ]; then
+	cp -Rf ../../rethinkdb-1.13 rethinkdb
 else
 	sudo apt-get update
-	sudo apt-get -y install git-core g++ nodejs npm libprotobuf-dev libgoogle-perftools-dev libncurses5-dev libboost-all-dev nodejs-legacy
-	git clone --depth 1 -b v1.12.x https://github.com/rethinkdb/rethinkdb.git
+	sudo apt-get -y install git-core g++ nodejs npm libprotobuf-dev libgoogle-perftools-dev libncurses5-dev libboost-all-dev nodejs-legacy autogen pkg-config libcurl4-openssl-dev
+	git clone --depth 1 -b v1.13.x https://github.com/rethinkdb/rethinkdb.git
 	cd rethinkdb
 	./configure --allow-fetch --fetch protobuf
 	make
 	cd ..
-	cp -Rf rethinkdb ../../rethinkdb-1.12
+	cp -Rf rethinkdb ../../rethinkdb-1.13
 fi
 
 # HACK: Remove symlink that points to missing file which is preventing us from archiving this build.
