@@ -16,7 +16,7 @@ script
     export PORT={{=service.env.PORT}}
     cd {{=service.env.PIO_SERVICE_PATH}}/live/install
     export PIO_SERVICE_DATA_BASE_PATH={{=service.env.PIO_SERVICE_DATA_BASE_PATH}}
-    exec {{=service.env.PIO_SERVICE_PATH}}/live/install/rethinkdb/build/release/rethinkdb --bind 127.0.0.1 --http-port {{=service.env.WEB_ADMIN_PORT}} >> {{=service.env.PIO_SERVICE_LOG_BASE_PATH}}.log 2>&1
+    exec {{=service.env.PIO_SERVICE_PATH}}/live/install/rethinkdb/build/release/rethinkdb --bind 127.0.0.1 --directory {{=service.env.PIO_SERVICE_DATA_BASE_PATH}} --http-port {{=service.env.WEB_ADMIN_PORT}} >> {{=service.env.PIO_SERVICE_LOG_BASE_PATH}}.log 2>&1
 #    exec /usr/bin/rethinkdb --bind 127.0.0.1 --http-port {{=service.env.WEB_ADMIN_PORT}} >> {{=service.env.PIO_SERVICE_LOG_BASE_PATH}}.log 2>&1
 end script
 
