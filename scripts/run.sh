@@ -6,7 +6,7 @@ sudo apt-get -y install nodejs npm nodejs-legacy
 initScript='
 description "{{=service.env.PIO_SERVICE_ID_SAFE}}"
 
-start on local-filesystems
+start on started local-filesystems
 stop on shutdown
 
 script
